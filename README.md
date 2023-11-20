@@ -35,3 +35,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 `yarn add prettier eslint-config-prettier eslint-plugin-prettier --save-dev`
+
+husky
+https: //github.com/typicode/husky
+commitlint
+https://github.com/conventional-changelog/commitlint
+`npm install --save-dev @commitlint/{config-conventional,cli} `
