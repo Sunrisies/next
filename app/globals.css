@@ -10,3 +10,18 @@ body {
 .border {
   border: 1px solid red;
 }
+.main-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0 auto;
+  /* margin-top: 130px; */
+}
+.left {
+  box-sizing: border-box;
+  width: calc(100% - 320px);
+}
+.right {
+  box-sizing: border-box;
+  width: 300px;
+}

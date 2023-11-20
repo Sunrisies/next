@@ -1,0 +1,43 @@
+@keyframes run {
+  0% {
+    transform: rotate(15deg);
+  }
+  25% {
+    transform: translateY(4px);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: rotate(15deg);
+  }
+}
+.footer-wrap {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  .fixed-powered {
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+
+    user-select: none;
+    .txt {
+    }
+    .author {
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+  .beianhao {
+    color: red;
+    text-decoration: none;
+  }
+  .ani {
+    display: inline-block;
+    animation: run 2s infinite linear;
+  }
+}

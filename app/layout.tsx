@@ -5,12 +5,13 @@ import StyledComponentsRegistry from '../lib/AntdRegistry'
 import React from 'react'
 import { Button, ConfigProvider, Menu } from 'antd'
 import MyHeader from '../components/header'
+import MyFooter from '../components/footer'
 async function getData() {
   const res = await fetch('http://chaoyang1024.top:3000/api/user/nav', {
     headers: {
       Authorization:
-        '	eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxfSwiaWF0IjoxNjk5NTA0Mzk0LCJleHAiOjE3MDAxMDkxOTR9.joCPyWUZdEmi8SHxtzovrbiHnhhB8qkUzltXiKlvecI'
-    }
+        '	eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxfSwiaWF0IjoxNjk5NTA0Mzk0LCJleHAiOjE3MDAxMDkxOTR9.joCPyWUZdEmi8SHxtzovrbiHnhhB8qkUzltXiKlvecI',
+    },
   })
   const data = await res.json()
   return data
@@ -23,7 +24,10 @@ const inter = Inter({ subsets: ['latin'] })
 //   description: '朝阳的个人博客'
 // }
 
-export default async function RootLayout(props: { children: React.ReactNode; header: React.ReactNode }) {
+export default async function RootLayout(props: {
+  children: React.ReactNode
+  header: React.ReactNode
+}) {
   const { data: navList } = await getData()
   // const router = useRouter()
   // // console.log(data,'====')
@@ -70,14 +74,26 @@ export default async function RootLayout(props: { children: React.ReactNode; hea
   //   // console.log(current, setCurrent)
   // }
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={inter.className}>
-        <ConfigProvider theme={theme}>
-          <MyHeader items={navList}></MyHeader>
-          <StyledComponentsRegistry>{props.children}</StyledComponentsRegistry>
-
-          <Button type="primary">Button</Button>
-        </ConfigProvider>
+        <div className={'border '}>
+          <ConfigProvider theme={theme}>
+            <StyledComponentsRegistry>
+              <MyHeader items={navList}></MyHeader>
+              <div className={'main-wrap p-6'}>
+                <div className={'left border'}>
+                  <div className={''} style={{ background: 'red' }}>
+                    {props.children}
+                  </div>
+                </div>
+                <div className={'right border '} style={{ height: '2000px' }}>
+                  右边
+                </div>
+              </div>
+              <MyFooter></MyFooter>
+            </StyledComponentsRegistry>
+          </ConfigProvider>
+        </div>
       </body>
     </html>
   )

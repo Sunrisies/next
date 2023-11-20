@@ -5,9 +5,8 @@ import React from 'react'
 import { useState } from 'react'
 import { Menu } from 'antd'
 import type { MenuProps } from 'antd'
-import { Dropdown, Space, Input } from 'antd'
-import { AudioOutlined } from '@ant-design/icons'
-import { DownOutlined, SmileOutlined } from '@ant-design/icons'
+import { Dropdown, Space, Input, Affix } from 'antd'
+import { AudioOutlined, DownOutlined, SmileOutlined } from '@ant-design/icons'
 const Header = ({ items }: { items: MenuProps['items'] }) => {
   const { Search } = Input
   const suffix = (
@@ -18,6 +17,23 @@ const Header = ({ items }: { items: MenuProps['items'] }) => {
       }}
     />
   )
+  const list = [
+    {
+      title: '全部'
+    },
+    {
+      title: '前端'
+    },
+    {
+      title: '后端'
+    },
+    {
+      title: '运维'
+    },
+    {
+      title: '随记'
+    }
+  ]
   const router = useRouter()
 
   const [current, setCurrent] = useState('mail')
@@ -26,6 +42,8 @@ const Header = ({ items }: { items: MenuProps['items'] }) => {
     setCurrent(e.key)
   }
   const onSearch = (value: any, _e: any, info: any) => console.log(info?.source, value)
+
+  const [top, setTop] = useState<number>(0)
   return (
     <>
       <div className={'h-16  flex items-center px-10 justify-between'} style={{ borderBottom: '1px solid rgba(5, 5, 5, 0.06)' }}>
@@ -50,6 +68,15 @@ const Header = ({ items }: { items: MenuProps['items'] }) => {
           </Dropdown>
         </div>
       </div>
+      <Affix offsetTop={top}>
+        <div className={'h-10  flex gap-3 items-center pl-14 sticky'} style={{ borderBottom: '1px solid rgba(5, 5, 5, 0.06)' }}>
+          {list.map((item) => (
+            <div key={item.title} className={'cursor-pointer'}>
+              {item.title}
+            </div>
+          ))}
+        </div>
+      </Affix>
     </>
   )
 }
