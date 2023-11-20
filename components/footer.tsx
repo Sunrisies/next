@@ -19,7 +19,7 @@ const FooterWrap = () => {
 
     return () => clearInterval(interval) //清除定时器
   }, []) // 注意，由于我们不需要在组件卸载时清除定时器，所以我们只在依赖数组中放入空数组。
-
+  console.log(1)
   const jumpToUrl = () => {
     // window.open(GITHUB_REPO)
   }
