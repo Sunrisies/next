@@ -41,3 +41,5 @@ https: //github.com/typicode/husky
 commitlint
 https://github.com/conventional-changelog/commitlint
 `npm install --save-dev @commitlint/{config-conventional,cli} `
+
+参考文件`https://zhuanlan.zhihu.com/p/184951182`
